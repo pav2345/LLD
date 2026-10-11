@@ -1,0 +1,44 @@
+step 1 while designing Low level design we need  first as identify the Requuirements 
+1. members can search , borrow , and Return books 
+2. Librarian can add , delete , and update a books 
+A member can borrow a book at most 5 times
+Book can be reserved if currently borrowed
+over due books  incur a fines of day 10 ruppes 
+
+
+The most and lot of people will make the mistake over the 
+The GOD class 
+The mistake: Stuffing everything into one class. A ParkingLot class that handles parking, payment, ticket generation, reporting, and user management.
+
+Why it happens: It feels simpler to put everything in one place.
+
+The fix: Apply the Single Responsibility Principle. Each class should have one reason to change. Split ParkingLot into ParkingLot, TicketService, PaymentProcessor, ParkingSpotManager.
+INHERITANCE COMPOSITION 
+The mistake: Creating deep inheritance hierarchies. Vehicle → Car → ElectricCar → TeslaModelS.
+
+Why it happens: Inheritance is taught first in OOP classes, so people reach for it by default.
+
+The fix: Prefer composition over inheritance. Instead of ElectricCar extends Car, give Car an Engine property that can be ElectricEngine or GasEngine. The Strategy pattern is your friend here.
+SKIPPING INTERFACES 
+The mistake: Concrete classes depending directly on other concrete classes. BookingService directly creates a MySQLDatabase instance.
+
+Why it happens: It’s faster to write and “works fine for now.”
+
+The fix: Define interfaces for dependencies. BookingService should depend on a Database interface, not MySQLDatabase. This is the Dependency Inversion Principle—and it makes your code testable, swappable, and future-proof.
+4. Designing for Future Requirements
+The mistake: Building elaborate class hierarchies for features that don’t exist yet. “What if we need to support drones in our parking lot?”
+
+Why it happens: Overengineering feels like good planning.
+
+The fix: Follow YAGNI (You Aren’t Gonna Need It). Design for current requirements. Make your code extensible (via interfaces and patterns) so adding new features is easy, but don’t build features that nobody asked for.
+5. Ignoring Edge Cases
+The mistake: Designing only for the happy path. What happens when the payment fails mid-booking? When two users try to book the same seat?
+
+Why it happens: Edge cases are hard and not immediately obvious.
+
+The fix: For every operation, ask: “What if this fails?” and “What if two things happen at the same time?” Design error handling and concurrency strategies as part of your LLD, not as an afterthought.
+
+The  DIfferce between HLD VS LLD 
+![alt text](image.png)
+
+To design LLD and LLD ![alt text](image-1.png)
